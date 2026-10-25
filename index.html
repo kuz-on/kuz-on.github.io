@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="description" content="This is kuzon's portfolio">
+        <title>kuzon</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="lit" id="lit"></div>
+
+        <!-- what you see before pulling the cord -->
+        <div class="dark_room">
+            <p class="dark_title" id="dark">It’s dark in here.</p>
+            <p class="dark_hint">Pull the cord.</p>
+            <p class="dark_hint">Click the bulb to change the light.</p>
+        </div>
+
+        <!-- the actual page -->
+        <div class="page">
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#process">Process</a>
+                <a href="#games" hidden>Games</a>
+                <a href="#services">Services</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <header class="hero">
+                <h1>kuzon</h1> <!-- boy im so tuff no way i came up with that-->
+                <p class="lead">I script Roblox games: the <mark>data</mark> underneath and the <mark>menus</mark> on top.</p>
+            </header>
+
+
+            <section class="sec" id="about">
+                <h2>About</h2>
+
+                <p class="big">I build the parts of a game players <mark>never see</mark>, and the parts they <mark>touch every minute</mark>.</p>
+
+                <p class="text">I got into programming in sixth grade, starting with C++ before I found game development. I tried a few different paths, and Roblox Studio is where scripting finally clicked. Since then I’ve spent <strong>over 3.5 years</strong> learning, building and taking commissions, and I’ve picked up a better feel for both the platform and the people making games on it.</p>
+
+                <p class="text">When I work with clients, I care about <strong>the idea behind a request</strong>, not only about making the code work. I keep communication clear, show progress as I go, and build systems that <strong>fit the game</strong> they’re made for.</p>
+
+                <dl>
+                    <div><dt>Languages</dt><dd>Luau, Lua, C++, GDScript</dd></div>
+                    <div><dt>Focus</dt><dd>Data systems and interfaces</dd></div>
+                    <div><dt>Reply time</dt><dd>Usually within a day</dd></div>
+                </dl>
+            </section>
+
+
+            <section class="sec" id="projects">
+                <h2>Projects</h2>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3>Bignum</h3>
+                        <div class="card_body">
+                            <p>Stores <mark>huge numbers</mark> compactly as a mantissa and an exponent, and supports many operations on them, including logarithms with a normal or a Bignum base. The logarithms use division instead of <code>math.log</code>, which keeps them <strong>fast</strong>.</p>
+                            <div class="card_foot">
+                                <p class="tags"><span>Luau</span><span>Math</span></p>
+                                <a href="https://github.com/kuz-on/LUAU-Modules/tree/c7468551aad79273cf1207c9349b1a9bca8d4e22/src/Bignum">View the code on GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3>RemoteService</h3>
+                        <div class="card_body">
+                            <p>A lightweight service for listening to RemoteEvents. <strong>Small and simple.</strong></p>
+                            <div class="card_foot">
+                                <p class="tags"><span>Luau</span><span>Networking</span></p>
+                                <a href="https://github.com/kuz-on/LUAU-Modules/tree/c7468551aad79273cf1207c9349b1a9bca8d4e22/src/RemoteService">View the code on GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- the three cards below are hidden until there are more projects.
+                         take off "hidden" and fill in the image and text to use one -->
+                    <article class="card" hidden>
+                        <div class="media">Image goes here</div>
+                        <h3>Project one</h3>
+                        <div class="card_body">
+                            <p>One line on what it is and what you did.</p>
+                            <div class="card_foot">
+                                <p class="tags"><span>Data</span><span>UI</span></p>
+                                <a href="#">View the code on GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" hidden>
+                        <div class="media">Image goes here</div>
+                        <h3>Project two</h3>
+                        <div class="card_body">
+                            <p>One line on what it is and what you did.</p>
+                            <div class="card_foot">
+                                <p class="tags"><span>Data</span><span>UI</span></p>
+                                <a href="#">View the code on GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" hidden>
+                        <div class="media">Image goes here</div>
+                        <h3>Project three</h3>
+                        <div class="card_body">
+                            <p>One line on what it is and what you did.</p>
+                            <div class="card_foot">
+                                <p class="tags"><span>Data</span><span>UI</span></p>
+                                <a href="#">View the code on GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- "All projects" is hidden for now son,
+                     take off "hidden" from the heading and the list to bring it back -->
+                <p class="sub" hidden>All projects</p>
+                <div hidden>
+                    <div class="irow"><span>Project name</span><span>Inventory system</span><span>2026</span></div>
+                    <div class="irow"><span>Project name</span><span>Shop interface</span><span>2026</span></div>
+                    <div class="irow"><span>Project name</span><span>Quest tracker</span><span>2025</span></div>
+                    <div class="irow"><span>Project name</span><span>Save system</span><span>2025</span></div>
+                </div>
+            </section>
+
+
+            <section class="sec" id="process">
+                <h2>Process</h2>
+
+                <ol class="steps">
+                    <li><b>Brief</b>You tell me what you need and when.</li>
+                    <li><b>Plan</b>I send back scope, price and a timeline.</li>
+                    <li><b>Build</b>You see progress as previews while I work.</li>
+                    <li><b>Review</b>You check the previews and ask for any changes.</li>
+                    <li><b>Delivery</b>Once the work is <mark>approved and paid</mark>, the script is yours, with notes and a round of fixes.</li>
+                </ol>
+            </section>
+
+
+            <!-- the Games section is hidden for now.
+                 take off "hidden" here and on the Games link in the nav to bring it back -->
+            <section class="sec" id="games" hidden>
+                <h2>Games</h2>
+
+                <div class="media">Game cover</div>
+                <p class="big">Game name</p>
+                <p>What the game is, what your part was, and the event it came from.</p>
+                <p class="btn_row"><span class="btn">Play on Roblox</span></p>
+
+                <p class="sub">In development</p>
+                <div>
+                    <div class="irow"><span>Game name</span><span>Genre and what it’s about</span><span>Soon</span></div>
+                    <div class="irow"><span>Game name</span><span>Genre and what it’s about</span><span>Soon</span></div>
+                </div>
+            </section>
+
+
+            <section class="sec" id="services">
+                <h2>Services</h2>
+
+                <dl>
+                    <div><dt>Data systems</dt><dd>Saving and loading, inventories, shops</dd></div>
+                    <div><dt>Interfaces</dt><dd>Menus, HUDs, animations and feel</dd></div>
+                    <div><dt>Tools</dt><dd>Admin panels and dev utilities</dd></div>
+                </dl>
+            </section>
+
+
+            <section class="sec" id="faq">
+                <h2>FAQ</h2>
+
+                <details>
+                    <summary>What do I need from you to start?</summary>
+                    <p>A short description of what you want, when you need it and your budget range. If it has to fit an existing game, access to it (Team Create or a copy of the place) helps.</p>
+                </details>
+                <details>
+                    <summary>How long does a project take?</summary>
+                    <p>It depends on the scope. You get a timeline in the plan, and I tell you early if anything shifts.</p>
+                </details>
+                <details>
+                    <summary>How does payment work?</summary>
+                    <p>The price is in the plan I send you. Payment is settled <strong>when you approve the work</strong>, and the finished script is delivered as soon as it clears.</p>
+                </details>
+                <details>
+                    <summary>Can you work with my existing game and code?</summary>
+                    <p><strong>Yes.</strong> I read through what’s already there first and write to match its structure, so new systems fit in instead of fighting the old ones.</p>
+                </details>
+                <details>
+                    <summary>Will my data and economy be safe from exploiters?</summary>
+                    <p>Anything players shouldn’t be able to change, like currency and inventories, is handled and checked <strong>on the server</strong>. I also test performance before handing a system over.</p>
+                </details>
+                <details>
+                    <summary>What if I want changes?</summary>
+                    <p>A round of fixes is included at delivery. Bigger changes get their own quote.</p>
+                </details>
+                <details>
+                    <summary>What if something breaks after delivery?</summary>
+                    <p>I fix problems with what I delivered <strong>at no charge</strong>, for a set period after delivery that’s stated in the plan.</p>
+                </details>
+                <details>
+                    <summary>Who owns the script?</summary>
+                    <p><strong>You do.</strong> Once it’s delivered, it’s yours to use in your game.</p>
+                </details>
+            </section>
+
+
+            <section class="sec" id="contact">
+                <h2>Say hi.</h2>
+
+                <p class="links">
+                    Discord <a href="https://discord.com/users/1394629354012803195">__kuzon_</a><br>
+                    Roblox <a href="https://www.roblox.com/users/3166552293/profile">Pet_m1</a>
+                </p>
+                <p class="note"><mark>Currently taking commissions.</mark> For a quick answer, include what you’re making, when you need it and your budget range.</p>
+            </section>
+
+            <footer>Pull the cord to turn the lights off. Click the bulb to change the light.</footer>
+        </div>
+
+
+        <!-- the lamp. the "halo" shapes sit under the real ones, they only show up on the dark page -->
+        <div class="lamp">
+            <svg class="bulb" id="bulb" viewBox="0 0 48 110" role="button" tabindex="0" aria-label="Change the light between yellow and white">
+                <path class="halo" d="M24 0V58"/>
+                <rect class="halo" x="17" y="58" width="14" height="10"/>
+                <circle class="halo" cx="24" cy="84" r="16"/>
+
+                <path class="part wire" d="M24 0V58"/>
+                <rect class="part cap" x="17" y="58" width="14" height="10"/>
+                <circle class="part glass" cx="24" cy="84" r="16"/>
+            </svg>
+
+            <svg class="cord" id="cord" viewBox="0 0 40 190" role="button" tabindex="0" aria-label="Pull the cord to switch the light on or off">
+                <path class="halo" id="lineh" d="M20 0V110"/>
+                <circle class="halo" id="beadh" cx="20" cy="110" r="7"/>
+
+                <path class="part" id="line" d="M20 0V110"/>
+                <circle class="part" id="bead" cx="20" cy="110" r="7"/>
+            </svg>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,642 @@
+/* fonts: Bricolage Grotesque, loaded from google fonts in index.html */
+
+
+/* COLORS
+--> yellow is the default look
+--> "dark" is what you get when the bulb is white
+*/
+:root {
+    --navy: hsl(226 42% 17%);
+    --sun: hsl(47 96% 62%);
+    --paper: hsl(50 100% 96%);
+    --pale: hsl(47 38% 86%);
+
+    /* where the light spreads from (the bulb) */
+    --bulb-x: calc(100% - 5.9rem);
+    --bulb-y: 84px;
+
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body {
+    --bg: var(--sun);
+    --text: var(--navy);
+    --line: var(--navy);
+    --card: #fff;
+    --bulb: hsl(48 100% 74%);
+    --halo: transparent;
+}
+
+body.dark {
+    --bg: hsl(228 52% 22%);
+    --text: hsl(47 85% 70%);
+    --line: var(--sun);
+    --card: hsl(228 54% 15%);
+    --bulb: hsl(50 100% 96%);
+    --halo: var(--sun);
+}
+
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    background: var(--navy);
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--navy);
+    color: var(--pale);
+    font: 400 1.15rem/1.5 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+/* the "hidden" attribute loses to any display rule, so force it */
+[hidden] {
+    display: none !important;
+}
+
+strong {
+    font-weight: 800;
+}
+
+/* bold text without the highlight box */
+mark {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-weight: 800;
+}
+
+code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: .9em;
+}
+
+
+/* ---------- the light coming on ---------- */
+
+.lit {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg);
+    clip-path: circle(0 at var(--bulb-x) var(--bulb-y));
+    transition: clip-path .9s cubic-bezier(.5, 0, .2, 1) .25s, background-color .4s;
+}
+
+body.on .lit {
+    clip-path: circle(160vmax at var(--bulb-x) var(--bulb-y));
+    transition-delay: 0s, 0s;
+}
+
+/* a quick stutter when the bulb turns on */
+.lit.flick {
+    animation: flick .7s .2s;
+}
+
+@keyframes flick {
+    0%, 100% { opacity: 1; }
+    14% { opacity: .55; }
+    26% { opacity: 1; }
+    38% { opacity: .6; }
+    50% { opacity: 1; }
+}
+
+
+/* ---------- the dark room (before the cord gets pulled) ---------- */
+
+.dark_room {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 6vw 3rem;
+    transition: opacity .35s .9s;
+}
+
+body.on .dark_room {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0s;
+}
+
+.dark_title {
+    font-size: clamp(2.4rem, 9vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.02em;
+}
+
+.dark_hint {
+    margin-top: .2rem;
+    color: hsl(47 20% 60%);
+}
+
+.dark_title + .dark_hint {
+    margin-top: .7rem;
+}
+
+
+/* ---------- the page ---------- */
+
+.page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    /* the extra room on the right keeps text away from the cord */
+    padding: 0 max(6vw, 4.5rem) 4rem 6vw;
+    color: var(--text);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, color .4s;
+}
+
+body.on .page {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: .65s, 0s;
+}
+
+.page a {
+    color: var(--line);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: .2em;
+}
+
+.page a:hover,
+.page a:focus-visible {
+    background: var(--line);
+    color: var(--bg);
+    text-decoration: none;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem 1.5rem;
+    padding: 1.2rem 7rem 1rem 0;
+    background: var(--bg);
+    font-size: 1rem;
+    transition: background-color .4s;
+}
+
+.hero {
+    padding: 3rem 0 1rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(4.2rem, 21vw, 14rem);
+    font-weight: 800;
+    line-height: .82;
+    letter-spacing: -.045em;
+}
+
+.lead {
+    max-width: 26rem;
+    margin: 2rem 0 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+}
+
+
+/* ---------- sections: one column, stacked, each under a heavy line ---------- */
+
+.sec {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 3px solid var(--line);
+    transition: border-color .4s;
+}
+
+.sec > h2 {
+    margin: 0 0 1.6rem;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.035em;
+}
+
+.sec p + p {
+    margin-top: .9rem;
+}
+
+.sec .media + .big {
+    margin-top: 1.1rem;
+}
+
+.sec p.btn_row,
+.sec p.note {
+    margin-top: 1.1rem;
+}
+
+.big {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -.02em;
+}
+
+.text {
+    max-width: 40rem;
+}
+
+.note {
+    max-width: 34rem;
+}
+
+.sub {
+    margin: 2.4rem 0 .8rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+}
+
+.links {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+dl {
+    max-width: 40rem;
+    margin: 1.4rem 0 0;
+}
+
+dl div {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 1rem;
+    padding: .7rem 0;
+    border-top: 2px solid var(--line);
+}
+
+dl div:last-child {
+    border-bottom: 2px solid var(--line);
+}
+
+dt {
+    font-weight: 800;
+}
+
+dd {
+    margin: 0;
+}
+
+
+/* ---------- project cards ---------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.3rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 2px solid var(--line);
+    transition: transform .15s, box-shadow .15s, background-color .4s, border-color .4s;
+}
+
+/* the colored strip at the top does the job an image would do */
+.card h3 {
+    margin: 0;
+    padding: 2.4rem 1.1rem .9rem;
+    background: var(--line);
+    color: var(--bg);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    transition: background-color .4s, color .4s;
+}
+
+.card_body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.1rem 1.1rem 1.3rem;
+}
+
+/* pushes the tags and the link to the bottom of the card */
+.card_foot {
+    margin-top: auto;
+    padding-top: 1.3rem;
+}
+
+.card_foot a {
+    display: inline-block;
+    margin-top: .8rem;
+}
+
+.tags span {
+    display: inline-block;
+    margin: 0 .4rem .3rem 0;
+    padding: 0 .65rem;
+    border: 2px solid var(--line);
+    border-radius: 2rem;
+    font-size: .85rem;
+}
+
+.media {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    background: var(--line);
+    color: var(--bg);
+    font-size: .9rem;
+}
+
+/* the index list (hidden for now) */
+.irow {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr 4rem;
+    gap: 1rem;
+    padding: .9rem .6rem;
+    border-top: 2px solid var(--line);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.irow:last-child {
+    border-bottom: 2px solid var(--line);
+}
+
+.irow span:nth-child(n+2) {
+    align-self: center;
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+
+.btn {
+    display: inline-block;
+    padding: .55rem 1.1rem;
+    background: var(--line);
+    color: var(--bg);
+    font-weight: 800;
+}
+
+
+/* ---------- process + faq ---------- */
+
+.steps {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 40rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+}
+
+.steps li {
+    position: relative;
+    padding-left: 3.6rem;
+    counter-increment: step;
+}
+
+.steps li::before {
+    content: counter(step);
+    position: absolute;
+    top: -.2rem;
+    left: 0;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.steps b {
+    display: block;
+    font-size: 1.3rem;
+}
+
+details {
+    max-width: 40rem;
+    border-top: 2px solid var(--line);
+}
+
+details:last-of-type {
+    border-bottom: 2px solid var(--line);
+}
+
+summary {
+    padding: .8rem 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+details p {
+    margin: 0 0 1rem;
+}
+
+footer {
+    margin-top: 4rem;
+    font-size: .95rem;
+}
+
+
+/* ---------- the lamp ---------- */
+
+.lamp {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    right: 1rem;
+    z-index: 3;
+    display: flex;
+    gap: .9rem;
+    align-items: flex-start;
+}
+
+.bulb {
+    width: 3rem;
+    height: auto;
+    overflow: visible;
+    transform-origin: 24px 0;
+    cursor: pointer;
+    outline-offset: 6px;
+}
+
+.bulb:focus-visible {
+    outline: 2px solid var(--pale);
+}
+
+body.on .bulb:focus-visible {
+    outline-color: var(--text);
+}
+
+.bulb.swing {
+    animation: swing 1.8s ease-out;
+}
+
+@keyframes swing {
+    0% { transform: rotate(7deg); }
+    20% { transform: rotate(-5deg); }
+    40% { transform: rotate(3.5deg); }
+    60% { transform: rotate(-2deg); }
+    80% { transform: rotate(1deg); }
+    100% { transform: none; }
+}
+
+.cord {
+    width: 2.5rem;
+    height: auto;
+    overflow: visible;
+    cursor: grab;
+    touch-action: none;
+    outline-offset: 6px;
+}
+
+.cord:active {
+    cursor: grabbing;
+}
+
+/* the outlines stay dark. the halo is a thin yellow edge so they
+   don't disappear on the dark page (on yellow it blends in) */
+.lamp .halo {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 6;
+    stroke-linejoin: round;
+    transition: stroke .3s;
+}
+
+body.on .lamp .halo {
+    stroke: var(--halo);
+}
+
+.lamp .part {
+    fill: var(--navy);
+    stroke: var(--pale);
+    stroke-width: 2;
+    transition: stroke .3s .9s, fill .3s .9s;
+}
+
+.lamp path.part {
+    fill: none;
+}
+
+.lamp .cap,
+.cord circle.part {
+    fill: var(--pale);
+}
+
+body.on .lamp .part {
+    stroke: var(--navy);
+    transition: stroke .3s, fill .4s;
+}
+
+body.on .lamp .cap,
+body.on .cord circle.part {
+    fill: var(--navy);
+}
+
+body.on .lamp .glass {
+    fill: var(--bulb);
+}
+
+
+/* ---------- hover only where there is a mouse ---------- */
+
+@media (hover: hover) {
+    .card:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .irow:hover {
+        background: var(--line);
+        color: var(--bg);
+    }
+}
+
+
+/* ---------- phones ---------- */
+
+@media (max-width: 700px) {
+    .page {
+        padding-right: 4rem;
+    }
+
+    /* one scrollable row instead of a tall wrapped block */
+    nav {
+        flex-wrap: nowrap;
+        gap: 1.3rem;
+        padding-right: 5.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 2rem;
+    }
+
+    .sec {
+        margin-top: 2.8rem;
+    }
+
+    .big {
+        font-size: 1.4rem;
+    }
+
+    dl div {
+        grid-template-columns: 1fr;
+        gap: .15rem;
+    }
+
+    .irow {
+        grid-template-columns: 1fr 4rem;
+    }
+
+    .irow span:nth-child(2) {
+        display: none;
+    }
+
+    .card h3 {
+        padding-top: 1.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .lit,
+    .bulb {
+        transition: none;
+        animation: none !important;
+    }
+}
