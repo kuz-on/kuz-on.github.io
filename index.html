@@ -44,13 +44,22 @@
 
                 <p class="big">I build the parts of a game players <mark>never see</mark>, and the parts they <mark>touch every minute</mark>.</p>
 
+                <div class="stats">
+                    <div class="stat"><b>25+</b><span>commissions completed</span></div>
+                    <div class="stat"><b>3.5+</b><span>years of scripting</span></div>
+                    <div class="stat"><b>40k</b><span>Robux, my biggest commission</span></div>
+                </div>
+
                 <p class="text">I got into programming in sixth grade, starting with C++ before I found game development. I tried a few different paths, and Roblox Studio is where scripting finally clicked. Since then I’ve spent <strong>over 3.5 years</strong> learning, building and taking commissions, and I’ve picked up a better feel for both the platform and the people making games on it.</p>
 
                 <p class="text">When I work with clients, I care about <strong>the idea behind a request</strong>, not only about making the code work. I keep communication clear, show progress as I go, and build systems that <strong>fit the game</strong> they’re made for.</p>
 
                 <dl>
                     <div><dt>Languages</dt><dd>Luau, Lua, C++, GDScript</dd></div>
-                    <div><dt>Focus</dt><dd>Data systems and interfaces</dd></div>
+                    <div><dt>Focus</dt><dd>Networking, data saving and optimization, plus interfaces</dd></div>
+                    <div><dt>Tools</dt><dd>Mostly my own modules, and I adapt to the libraries you use</dd></div>
+                    <div><dt>Speaks</dt><dd>Romanian, English, French</dd></div>
+                    <div><dt>Timezone</dt><dd>GMT + 2:00 / GMT + 3:00 (in summer)</dd></div>
                     <div><dt>Reply time</dt><dd>Usually within a day</dd></div>
                 </dl>
             </section>
@@ -63,7 +72,7 @@
                     <article class="card">
                         <h3>Bignum</h3>
                         <div class="card_body">
-                            <p>Stores <mark>huge numbers</mark> compactly as a mantissa and an exponent, and supports many operations on them, including logarithms with a normal or a Bignum base. The logarithms use division instead of <code>math.log</code>, which keeps them <strong>fast</strong>.</p>
+                            <p>Made for incremental games. Stores <mark>huge numbers</mark> as a mantissa and an exponent, and supports addition, subtraction, multiplication, division, exponentiation by a normal number, and logarithms with a normal or a Bignum base. The logarithms use division instead of <code>math.log</code>, which keeps them <strong>fast</strong>.</p>
                             <div class="card_foot">
                                 <p class="tags"><span>Luau</span><span>Math</span></p>
                                 <a href="https://github.com/kuz-on/LUAU-Modules/tree/c7468551aad79273cf1207c9349b1a9bca8d4e22/src/Bignum">View the code on GitHub</a>
@@ -74,7 +83,7 @@
                     <article class="card">
                         <h3>RemoteService</h3>
                         <div class="card_body">
-                            <p>A lightweight service for listening to RemoteEvents. <strong>Small and simple.</strong></p>
+                            <p>A small shortcut for listening to <mark>RemoteEvents</mark>, so networking code stays <strong>short and clean</strong>.</p>
                             <div class="card_foot">
                                 <p class="tags"><span>Luau</span><span>Networking</span></p>
                                 <a href="https://github.com/kuz-on/LUAU-Modules/tree/c7468551aad79273cf1207c9349b1a9bca8d4e22/src/RemoteService">View the code on GitHub</a>
@@ -139,7 +148,7 @@
                 <ol class="steps">
                     <li><b>Brief</b>You tell me what you need and when.</li>
                     <li><b>Plan</b>I send back scope, price and a timeline.</li>
-                    <li><b>Build</b>You see progress as previews while I work.</li>
+                    <li><b>Build</b>You see progress as previews while I work, and you’re welcome to chat with me along the way.</li>
                     <li><b>Review</b>You check the previews and ask for any changes.</li>
                     <li><b>Delivery</b>Once the work is <mark>approved and paid</mark>, the script is yours, with notes and a round of fixes.</li>
                 </ol>
@@ -168,9 +177,10 @@
                 <h2>Services</h2>
 
                 <dl>
-                    <div><dt>Data systems</dt><dd>Saving and loading, inventories, shops</dd></div>
-                    <div><dt>Interfaces</dt><dd>Menus, HUDs, animations and feel</dd></div>
-                    <div><dt>Tools</dt><dd>Admin panels and dev utilities</dd></div>
+                    <div><dt>Networking</dt><dd>Remotes and client-server communication</dd></div>
+                    <div><dt>Data saving</dt><dd>Saving and loading, custom-built from scratch for your game</dd></div>
+                    <div><dt>Optimization</dt><dd>Performance-heavy systems that stay fast, like Bignum</dd></div>
+                    <div><dt>Interfaces</dt><dd>Menus and HUDs, built from your design or matched to a reference</dd></div>
                 </dl>
             </section>
 
@@ -187,12 +197,20 @@
                     <p>It depends on the scope. You get a timeline in the plan, and I tell you early if anything shifts.</p>
                 </details>
                 <details>
+                    <summary>How do you charge?</summary>
+                    <p>Per task or per milestone, agreed in the plan before work starts. Very small jobs aren’t a good fit.</p>
+                </details>
+                <details>
                     <summary>How does payment work?</summary>
                     <p>The price is in the plan I send you. Payment is settled <strong>when you approve the work</strong>, and the finished script is delivered as soon as it clears.</p>
                 </details>
                 <details>
                     <summary>Can you work with my existing game and code?</summary>
                     <p><strong>Yes.</strong> I read through what’s already there first and write to match its structure, so new systems fit in instead of fighting the old ones.</p>
+                </details>
+                <details>
+                    <summary>Can you work with existing libraries?</summary>
+                    <p><strong>Yes.</strong> I build most of my tools and systems myself, so they fit your game exactly, but I can <strong>adapt</strong> to the libraries your game already uses (ProfileStore, for example) and pick up new ones as needed.</p>
                 </details>
                 <details>
                     <summary>Will my data and economy be safe from exploiters?</summary>
@@ -209,6 +227,14 @@
                 <details>
                     <summary>Who owns the script?</summary>
                     <p><strong>You do.</strong> Once it’s delivered, it’s yours to use in your game.</p>
+                </details>
+                <details>
+                    <summary>What don’t you do?</summary>
+                    <p>I only do <strong>scripting</strong>, so no modeling, building, VFX or music. For interfaces, I can build from your design or match the layout and feel of a reference you send me.</p>
+                </details>
+                <details>
+                    <summary>Do you take long-term jobs?</summary>
+                    <p>I do my best work on commissions with a clear task or milestones. A long-term role is possible if the project is the right fit.</p>
                 </details>
             </section>
 
